@@ -1,0 +1,34 @@
+{
+  "student": [
+    {
+      "firstName": "dev",
+      "lastName": "kathiriya",
+      "email": "devu@yopmail.com",
+      "id": "22ab"
+    },
+    {
+      "firstName": "jay",
+      "lastName": "borad",
+      "email": "jay@yopmail.com",
+      "id": "dc31"
+    },
+    {
+      "id": "77ab",
+      "firstName": "ytryrtr",
+      "lastName": "ffghfghf",
+      "email": "tirth@yopmail.com"
+    },
+    {
+      "id": "cb8e",
+      "firstName": "devu",
+      "lastName": "kathiriya",
+      "email": "devu@yopmail.com"
+    },
+    {
+      "id": "b018",
+      "firstName": "devu",
+      "lastName": "kathiriya",
+      "email": "devu@yopmail.com"
+    }
+  ]
+}

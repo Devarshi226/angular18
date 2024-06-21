@@ -1,1 +1,84 @@
-<p>home works!</p>
+<div>
+<form [formGroup]="userForm" >
+    <div>
+      <label for="firstName">First Name</label>
+      <input id="firstName" formControlName="firstName">
+      <div class="error">
+        <span *ngIf="userForm.get('firstName')?.touched && userForm.get('firstName')?.errors?.['required']">
+          Firstname is required
+        </span>
+      </div>
+      <!-- <div class="error">
+        @if(userForm.controls['firstname']?.touched && userForm.controls['firstname'].errors?.['required']){
+            <span>Firstname is required</span>
+        }
+        
+      </div> -->
+    </div>
+  
+    <div>
+      <label for="lastName">Last Name</label>
+      <input id="lastName" formControlName="lastName">
+      <div class="error">
+        <span *ngIf="userForm.get('lastName')?.touched && userForm.get('lastName')?.errors?.['required']">
+          Lastname is required
+        </span>
+      </div>
+    </div>
+  
+    <div>
+      <label for="email">Email</label>
+      <input id="email" formControlName="email">
+     <div class="error">
+      <span *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['required']">
+        Email is required
+      </span>
+      <span *ngIf="userForm.get('email')?.touched && userForm.get('email')?.errors?.['email']">
+        Invalid Email format
+      </span>
+     </div>
+    </div>
+  
+    <button type="submit" [disabled]="userForm.invalid" (click)="onSubmit()">Submit</button>
+  </form>
+</div>
+  
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef><b>Firstname</b>  </th>
+    <td mat-cell *matCellDef="let row"> {{row.firstName}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef> <b>Lastame</b> </th>
+    <td mat-cell *matCellDef="let row"> {{row.lastName}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> <b>Email</b> </th>
+    <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header><b>Action</b></th>
+    <td mat-cell *matCellDef="let row">
+      <button mat-icon-button color="primary" (click)="onEdit(row)">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+
+      <button mat-icon-button color="warn" (click)="onDelete(row.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
